@@ -1,8 +1,12 @@
 package com.techlad.smartdairy.LoginandSignup
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -34,6 +38,8 @@ class SignUpActivity : AppCompatActivity() {
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase.reference.child("users")
 
+        binding.confirmPassword.addTextChangedListener(passwordTextWatcher)
+
         binding.buttonSignup.setOnClickListener {
             val signupUsername = binding.signupUsername.text.toString()
             val signupPassword = binding.signupPassword.text.toString()
@@ -52,6 +58,31 @@ class SignUpActivity : AppCompatActivity() {
             finish()
         }
     }
+
+
+    private val passwordTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable?) {
+            validatePasswordMatch()
+        }
+
+        private fun validatePasswordMatch() {
+            val password = binding.signupPassword.text.toString()
+            val confirmPassword = binding.confirmPassword.text.toString()
+            if (password != confirmPassword) {
+                binding.buttonSignup.isEnabled = false
+                binding.confirmPasswordLayout.boxStrokeColor = getColor(R.color.md_theme_error)
+                binding.confirmPasswordLayout.hintTextColor = ColorStateList.valueOf(getColor(R.color.md_theme_error))
+            } else {
+                binding.buttonSignup.isEnabled = true
+                binding.confirmPasswordLayout.boxStrokeColor = getColor(R.color.md_theme_primary)
+                binding.confirmPasswordLayout.hintTextColor = ColorStateList.valueOf(getColor(R.color.md_theme_primary))
+            }
+        }
+    }
+
+
 
     private fun signupUser(username: String, password: String){
         databaseReference.orderByChild("username")
