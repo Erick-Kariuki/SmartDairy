@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "374776843000",
+    "project_id": "smart-dairy2",
+    "storage_bucket": "smart-dairy2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374776843000:android:209bff7e9ee95d6410890d",
+        "android_client_info": {
+          "package_name": "com.techlad.smartdairy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkaLpH_QmuBWOZwfIyDm9Z9tAEFAK4v4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="?attr/colorSecondaryContainer"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="DAIRY FARM RECORD"
+            app:titleCentered="true"
+            app:titleTextColor="?attr/colorOnPrimary"
+            app:navigationIcon="@drawable/baseline_menu_24"
+            app:navigationIconTint="?attr/colorOnPrimary"
+            android:layout_marginTop="10dp"
+            app:menu="@menu/toolbar_menu"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/farmNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MODERN DAIRY FARMING"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/totalCowsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/totalImage"
+                android:layout_width="100dp"
+                android:layout_height="62dp"
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@drawable/cow" />
+
+            <TextView
+                android:id="@+id/totalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/totalNum"
+                android:text="10"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/milkingCowsLayout"
+            android:gravity="center"
+            android:padding="20dp"
+            android:textColor="#000000"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/milkingImage"
+                android:layout_width="100dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@drawable/cow" />
+
+            <TextView
+                android:id="@+id/milkingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Milking"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/milkingNum"
+                android:text="10"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dryCowsLayout"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/dryImage"
+                android:layout_width="100dp"
+                android:layout_height="61dp"
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@drawable/cow" />
+
+            <TextView
+                android:id="@+id/dryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dry"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dryNum"
+                android:text="10"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/heifersCowsLayout"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/heiferImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@drawable/cattle" />
+
+            <TextView
+                android:id="@+id/heiferText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heifers"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/heiferNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/calvesCowsLayout"
+            android:gravity="center"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/calfImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@drawable/cattle" />
+
+            <TextView
+                android:id="@+id/calfText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calves"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/calfNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bullsCowsLayout"
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/bullImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@drawable/cattle" />
+
+            <TextView
+                android:id="@+id/bullText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bulls"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/bullNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <Button
+            android:id="@+id/addCowButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ADD COW"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REMOVE COW"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <Button
+            android:id="@+id/viewCowsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VIEW COW DETAILS"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EDIT COW DETAILS"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+
+</LinearLayout>
