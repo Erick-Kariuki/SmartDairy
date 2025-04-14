@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var valueEventListener: ValueEventListener
+    private var userId: String? = null
     private var totalCowCount: Int = 0
     private var milkingCowCount: Int = 0
     private var dryCowsCount: Int = 0
@@ -40,15 +41,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val farmName = sharedPreferences.getString("current_farm_name", "Unknown Farm")
         binding.farmNameTextView.text = farmName
+        userId = sharedPreferences.getString("current_user_id", null)
 
 
 
         binding.addCowButton.setOnClickListener {
             val dialog = AddCowDialogFragment()
             dialog.show(supportFragmentManager, "AddCowDialog")
+        }
+
+        binding.breedingRecordsButton.setOnClickListener {
+            val intent = Intent(this, BreedingRecordsActivity::class.java)
+            startActivity(intent)
         }
 
         binding.viewCowsButton.setOnClickListener {
@@ -106,24 +113,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("cows")
+        databaseReference = FirebaseDatabase.getInstance().getReference("cows").child(userId!!)
 
         countMilkingCows()
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("cows")
+        databaseReference = FirebaseDatabase.getInstance().getReference("cows").child(userId!!)
 
         countDryCows()
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("cows")
+        databaseReference = FirebaseDatabase.getInstance().getReference("cows").child(userId!!)
         countHeiferCows()
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("cows")
+        databaseReference = FirebaseDatabase.getInstance().getReference("cows").child(userId!!)
         countCalvesCows()
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("cows")
+        databaseReference = FirebaseDatabase.getInstance().getReference("cows").child(userId!!)
         countAllCows()
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("cows")
+        databaseReference = FirebaseDatabase.getInstance().getReference("cows").child(userId!!)
         countBullsCows()
 
     }
@@ -133,8 +140,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 totalCowCount = 0
                 if (snapshot.hasChildren()) {
-                    for (userSnapshot in snapshot.children) { // Iterate through users
-                        for (cowSnapshot in userSnapshot.children) {  // Iterate through cows for each user
+                        for (cowSnapshot in snapshot.children) {  // Iterate through cows for each user
                             try {
                                 val cow = cowSnapshot.getValue(CowData::class.java)
                                 if (cow != null) {
@@ -149,7 +155,6 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    }
                     binding.totalNum.text = totalCowCount.toString()
                 } else {
                     binding.totalNum.text = "0"
@@ -179,8 +184,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 milkingCowCount = 0
                 if (snapshot.hasChildren()) {
-                    for (userSnapshot in snapshot.children) { // Iterate through users
-                        for (cowSnapshot in userSnapshot.children) {  // Iterate through cows for each user
+                        for (cowSnapshot in snapshot.children) {  // Iterate through cows for each user
                             try {
                                 val cow = cowSnapshot.getValue(CowData::class.java)
                                 if (cow != null && cow.cowStatus == "milking") {
@@ -195,7 +199,6 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    }
                     binding.milkingNum.text = milkingCowCount.toString()
                 } else {
                     binding.milkingNum.text = "0"
@@ -227,8 +230,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 dryCowsCount = 0
                 if (snapshot.hasChildren()) {
-                    for (userSnapshot in snapshot.children) { // Iterate through users
-                        for (cowSnapshot in userSnapshot.children) {  // Iterate through cows for each user
+                        for (cowSnapshot in snapshot.children) {  // Iterate through cows for each user
                             try {
                                 val cow = cowSnapshot.getValue(CowData::class.java)
                                 if (cow != null && cow.cowStatus == "dry") {
@@ -243,7 +245,6 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    }
                     binding.dryNum.text = dryCowsCount.toString()
                 } else {
                     binding.dryNum.text = "0"
@@ -275,8 +276,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 heiferCowsCount = 0
                 if (snapshot.hasChildren()) {
-                    for (userSnapshot in snapshot.children) { // Iterate through users
-                        for (cowSnapshot in userSnapshot.children) {  // Iterate through cows for each user
+                        for (cowSnapshot in snapshot.children) {  // Iterate through cows for each user
                             try {
                                 val cow = cowSnapshot.getValue(CowData::class.java)
                                 if (cow != null && cow.cowStatus == "heifer") {
@@ -291,7 +291,6 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    }
                     binding.heiferNum.text = heiferCowsCount.toString()
                 } else {
                     binding.heiferNum.text = "0"
@@ -321,8 +320,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 calvesCowsCount = 0
                 if (snapshot.hasChildren()) {
-                    for (userSnapshot in snapshot.children) { // Iterate through users
-                        for (cowSnapshot in userSnapshot.children) {  // Iterate through cows for each user
+                        for (cowSnapshot in snapshot.children) {  // Iterate through cows for each user
                             try {
                                 val cow = cowSnapshot.getValue(CowData::class.java)
                                 if (cow != null && cow.cowStatus == "calf") {
@@ -337,7 +335,6 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    }
                     binding.calfNum.text = calvesCowsCount.toString()
                 } else {
                     binding.calfNum.text = "0"
@@ -367,8 +364,7 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 bullCowCount = 0
                 if (snapshot.hasChildren()) {
-                    for (userSnapshot in snapshot.children) { // Iterate through users
-                        for (cowSnapshot in userSnapshot.children) {  // Iterate through cows for each user
+                        for (cowSnapshot in snapshot.children) {  // Iterate through cows for each user
                             try {
                                 val cow = cowSnapshot.getValue(CowData::class.java)
                                 if (cow != null && cow.cowStatus == "bull") {
@@ -383,7 +379,6 @@ class MainActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    }
                     binding.bullNum.text = bullCowCount.toString()
                 } else {
                     binding.bullNum.text = "0"

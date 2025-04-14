@@ -1,23 +1,22 @@
-package com.techlad.smartdairy.data
+package com.techlad.smartdairy.adapters
 
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.techlad.smartdairy.CowDetailsActivity
 import com.techlad.smartdairy.CowListActivity
 import com.techlad.smartdairy.R
+import com.techlad.smartdairy.data.CowData
 
 class CowAdapter(private val context: Context,
                  private val cowList: MutableList<CowData>

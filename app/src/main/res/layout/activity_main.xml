@@ -281,9 +281,10 @@
             android:layout_margin="5dp"/>
 
         <Button
+            android:id="@+id/breedingRecordsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REMOVE COW"
+            android:text="BREEDING RECORDS"
             android:layout_weight="1"
             android:layout_margin="5dp"/>
     </LinearLayout>

@@ -2,6 +2,7 @@ package com.techlad.smartdairy.LoginandSignup
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -19,8 +20,7 @@ import com.techlad.smartdairy.R
 import com.techlad.smartdairy.data.UserData
 import com.techlad.smartdairy.databinding.ActivityLoginBinding
 import androidx.core.content.edit
-import com.google.firebase.Firebase
-import com.google.firebase.database.database
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -50,11 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, "All fields are required",
                     Toast.LENGTH_SHORT).show()
             }
-
-
         }
-
-
 
         binding.signupRedirect.setOnClickListener {
             startActivity(Intent(this@LoginActivity, SignUpActivity::class.java))
@@ -102,5 +98,7 @@ class LoginActivity : AppCompatActivity() {
 
             })
     }
+
+
 
 }
