@@ -77,7 +77,7 @@ class AddCowDialogFragment : DialogFragment() {
         }
 
         val cowBreedOptions = arrayOf("Select Cow Breed","Friesian", "Holstein", "Jersey",
-            "Angus", "Sahiwal", "Gir", "Nellore", "Indigenous") // Define your breeds
+            "Angus", "Sahiwal", "Gir", "Nellore", "Indigenous","Guernesy","Zebu","Boran","Simmental","Red Angus","Brown Swiss","Charolais") // Define your breeds
         cowBreedAdapter = ArrayAdapter(
             requireContext(),
             android.R.layout.simple_spinner_item,
