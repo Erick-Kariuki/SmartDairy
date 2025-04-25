@@ -21,10 +21,9 @@
             app:title="DAIRY FARM RECORD"
             app:titleCentered="true"
             app:titleTextColor="?attr/colorOnPrimary"
-            app:navigationIcon="@drawable/baseline_menu_24"
             app:navigationIconTint="?attr/colorOnPrimary"
             android:layout_marginTop="10dp"
-            app:menu="@menu/toolbar_menu"/>
+            />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
@@ -73,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/totalNum"
-                android:text="10"
+                android:text="50"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 />
@@ -303,12 +302,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="EDIT COW DETAILS"
-            android:layout_weight="1"
-            android:layout_margin="5dp"/>
+
     </LinearLayout>
 
 </LinearLayout>
