@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val farmName = sharedPreferences.getString("current_farm_name", "Unknown Farm")
-        binding.farmNameTextView.text = farmName
+        binding.farmNameTextView.text = farmName?.uppercase()
         userId = sharedPreferences.getString("current_user_id", null)
 
 
