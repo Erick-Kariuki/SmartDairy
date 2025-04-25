@@ -39,7 +39,7 @@ class CowDetailsActivity : AppCompatActivity() {
         val cowName = bundle?.getString("cowName")
         val motherName = bundle?.getString("motherName")
         val dateOfBirth = bundle?.getString("dateOfBirth")
-        val breed = bundle?.getString("breed")
+        val breed = bundle?.getString("cowBreed")
         val tagNumber = bundle?.getString("tagNumber")
         val imageUrl = bundle?.getString("imageUrl")
         val cowStatus = bundle?.getString("cowStatus")
